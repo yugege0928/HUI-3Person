@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.mapper.SysDictMapper">
+  <resultMap id="BaseResultMap" type="com.lanou.bean.SysDict">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="dict_tabname" jdbcType="VARCHAR" property="dictTabname" />
+    <result column="dict_colname" jdbcType="VARCHAR" property="dictColname" />
+    <result column="dict_option" jdbcType="VARCHAR" property="dictOption" />
+    <result column="dict_text" jdbcType="VARCHAR" property="dictText" />
+    <result column="dict_sort" jdbcType="INTEGER" property="dictSort" />
+    <result column="dict_name" jdbcType="VARCHAR" property="dictName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dict_tabname, dict_colname, dict_option, dict_text, dict_sort, dict_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_dict
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_dict
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lanou.bean.SysDict">
+    insert into sys_dict (id, dict_tabname, dict_colname, 
+      dict_option, dict_text, dict_sort, 
+      dict_name)
+    values (#{id,jdbcType=INTEGER}, #{dictTabname,jdbcType=VARCHAR}, #{dictColname,jdbcType=VARCHAR}, 
+      #{dictOption,jdbcType=VARCHAR}, #{dictText,jdbcType=VARCHAR}, #{dictSort,jdbcType=INTEGER}, 
+      #{dictName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lanou.bean.SysDict">
+    insert into sys_dict
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dictTabname != null">
+        dict_tabname,
+      </if>
+      <if test="dictColname != null">
+        dict_colname,
+      </if>
+      <if test="dictOption != null">
+        dict_option,
+      </if>
+      <if test="dictText != null">
+        dict_text,
+      </if>
+      <if test="dictSort != null">
+        dict_sort,
+      </if>
+      <if test="dictName != null">
+        dict_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dictTabname != null">
+        #{dictTabname,jdbcType=VARCHAR},
+      </if>
+      <if test="dictColname != null">
+        #{dictColname,jdbcType=VARCHAR},
+      </if>
+      <if test="dictOption != null">
+        #{dictOption,jdbcType=VARCHAR},
+      </if>
+      <if test="dictText != null">
+        #{dictText,jdbcType=VARCHAR},
+      </if>
+      <if test="dictSort != null">
+        #{dictSort,jdbcType=INTEGER},
+      </if>
+      <if test="dictName != null">
+        #{dictName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lanou.bean.SysDict">
+    update sys_dict
+    <set>
+      <if test="dictTabname != null">
+        dict_tabname = #{dictTabname,jdbcType=VARCHAR},
+      </if>
+      <if test="dictColname != null">
+        dict_colname = #{dictColname,jdbcType=VARCHAR},
+      </if>
+      <if test="dictOption != null">
+        dict_option = #{dictOption,jdbcType=VARCHAR},
+      </if>
+      <if test="dictText != null">
+        dict_text = #{dictText,jdbcType=VARCHAR},
+      </if>
+      <if test="dictSort != null">
+        dict_sort = #{dictSort,jdbcType=INTEGER},
+      </if>
+      <if test="dictName != null">
+        dict_name = #{dictName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lanou.bean.SysDict">
+    update sys_dict
+    set dict_tabname = #{dictTabname,jdbcType=VARCHAR},
+      dict_colname = #{dictColname,jdbcType=VARCHAR},
+      dict_option = #{dictOption,jdbcType=VARCHAR},
+      dict_text = #{dictText,jdbcType=VARCHAR},
+      dict_sort = #{dictSort,jdbcType=INTEGER},
+      dict_name = #{dictName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

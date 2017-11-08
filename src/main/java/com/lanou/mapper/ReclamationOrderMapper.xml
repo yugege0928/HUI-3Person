@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.mapper.ReclamationOrderMapper">
+  <resultMap id="BaseResultMap" type="com.lanou.bean.ReclamationOrder">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="scrap_code" jdbcType="VARCHAR" property="scrapCode" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
+    <result column="sc_id" jdbcType="VARCHAR" property="scId" />
+    <result column="rd_id" jdbcType="VARCHAR" property="rdId" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="sc_status" jdbcType="VARCHAR" property="scStatus" />
+    <result column="rd_status" jdbcType="VARCHAR" property="rdStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, scrap_code, owner_id, sc_id, rd_id, amount, unit, money, sc_status, 
+    rd_status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from reclamation_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from reclamation_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lanou.bean.ReclamationOrder">
+    insert into reclamation_order (id, order_no, scrap_code, 
+      owner_id, sc_id, rd_id, 
+      amount, unit, money, 
+      sc_status, rd_status, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{scrapCode,jdbcType=VARCHAR}, 
+      #{ownerId,jdbcType=VARCHAR}, #{scId,jdbcType=VARCHAR}, #{rdId,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=INTEGER}, #{unit,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, 
+      #{scStatus,jdbcType=VARCHAR}, #{rdStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lanou.bean.ReclamationOrder">
+    insert into reclamation_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="scrapCode != null">
+        scrap_code,
+      </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="scId != null">
+        sc_id,
+      </if>
+      <if test="rdId != null">
+        rd_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="scStatus != null">
+        sc_status,
+      </if>
+      <if test="rdStatus != null">
+        rd_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="scrapCode != null">
+        #{scrapCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="scId != null">
+        #{scId,jdbcType=VARCHAR},
+      </if>
+      <if test="rdId != null">
+        #{rdId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=INTEGER},
+      </if>
+      <if test="scStatus != null">
+        #{scStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="rdStatus != null">
+        #{rdStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lanou.bean.ReclamationOrder">
+    update reclamation_order
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="scrapCode != null">
+        scrap_code = #{scrapCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="scId != null">
+        sc_id = #{scId,jdbcType=VARCHAR},
+      </if>
+      <if test="rdId != null">
+        rd_id = #{rdId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=INTEGER},
+      </if>
+      <if test="scStatus != null">
+        sc_status = #{scStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="rdStatus != null">
+        rd_status = #{rdStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lanou.bean.ReclamationOrder">
+    update reclamation_order
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      scrap_code = #{scrapCode,jdbcType=VARCHAR},
+      owner_id = #{ownerId,jdbcType=VARCHAR},
+      sc_id = #{scId,jdbcType=VARCHAR},
+      rd_id = #{rdId,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=VARCHAR},
+      money = #{money,jdbcType=INTEGER},
+      sc_status = #{scStatus,jdbcType=VARCHAR},
+      rd_status = #{rdStatus,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
