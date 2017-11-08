@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -30,6 +32,9 @@ public class AreaController {
 
         System.out.println(5);
         System.out.println(6);
+
+        Integer b = 333;
+        Collection c = new ArrayList();
 
         System.out.println(7);
         System.out.println(8);
