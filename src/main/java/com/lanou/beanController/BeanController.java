@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BeanController {
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "/")
     public String index(){
         return "/index";
     }
@@ -25,29 +25,29 @@ public class BeanController {
     }
 
     /**
-     * 产品管理跳转
+     * 权限管理跳转
      */
-    //品牌管理
+    //菜单管理
     @RequestMapping(value = "/product-brand")
     public String produceB(){
         return "/product-brand";
     }
-    //分类管理
-    @RequestMapping(value = "/product-category")
+    //角色管理(管理员)
+    @RequestMapping(value = "/admin-list")
     public String produceC(){
-        return "/product-category";
+        return "/admin-list";
     }
 
-    //分类管理-add
+    //分类管理-add(没有使用)
     @RequestMapping(value = "/product-category-add")
     public String produceCA(){
         return "/product-category-add";
     }
 
-    //产品管理
-    @RequestMapping(value = "/product-list")
+    //用户管理
+    @RequestMapping(value = "/user-list")
     public String produceL(){
-        return "/product-list";
+        return "/user-list";
     }
 
 
